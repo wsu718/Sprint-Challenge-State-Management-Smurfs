@@ -15,9 +15,7 @@ export const GET_SMURFS_FAILURE = 'GET_SMURFS_FAILURE';
 export const getSmurfs = () => dispatch => {
     dispatch({ type: GET_SMURFS_START });
     axios
-        // .get(`https://api.github.com/repos/${input}`)
         .get(`http://localhost:3333/smurfs`)
-        // .then(res => console.log(res))
         .then(res => {
             dispatch({ type: GET_SMURFS_SUCCESS, payload: res.data });
         })
@@ -29,7 +27,6 @@ export const getSmurfs = () => dispatch => {
 export const addSmurf = input => dispatch => {
     dispatch({ type: ADD_SMURF_START });
     axios
-        // .get(`https://api.github.com/repos/${input}`)
         .post(`http://localhost:3333/smurfs`, input)
         .then(res => {
             // console.log(res)
@@ -43,7 +40,6 @@ export const addSmurf = input => dispatch => {
 export const deleteSmurf = id => dispatch => {
     dispatch({ type: DELETE_SMURF_START });
     axios
-        // .get(`https://api.github.com/repos/${input}`)
         .delete(`http://localhost:3333/smurfs/${id}`)
         .then(res => {
             // console.log(res)

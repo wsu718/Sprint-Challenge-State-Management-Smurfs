@@ -120,9 +120,9 @@ const SmurfForm = props => {
 const mapStateToProps = state => {
     // console.log(state)
     return {
-        addSmurf: state.addSmurf,
-        getSmurfs: state.getSmurfs,
-        deleteSmurf: state.deleteSmurf,
+        // addSmurf: state.addSmurf,
+        // getSmurfs: state.getSmurfs,
+        // deleteSmurf: state.deleteSmurf,
         isFetching: state.isFetching,
         isPosting: state.isPosting,
         error: state.error
