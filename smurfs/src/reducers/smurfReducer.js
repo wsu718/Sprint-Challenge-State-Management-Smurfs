@@ -12,7 +12,7 @@ import {
 
 const initialState = {
     smurfs: [
-        { "name": "InitialState Smurf!!!!!", "age": 200, "height": "5cm", "id": 0 }
+
     ],
     isFetching: false,
     error: '',
@@ -31,7 +31,7 @@ const smurfReducer = (state = initialState, action) => {
         case ADD_SMURF_SUCCESS:
             return {
                 ...state,
-                smurfs: [...state.smurfs, action.payload],
+                smurfs: action.payload,
                 isPosting: false,
                 error: '',
             }
@@ -49,6 +49,7 @@ const smurfReducer = (state = initialState, action) => {
         case DELETE_SMURF_SUCCESS:
             return {
                 ...state,
+                smurfs: action.payload,
                 isPosting: false,
                 error: '',
             }

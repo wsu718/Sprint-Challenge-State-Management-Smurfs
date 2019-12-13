@@ -33,7 +33,7 @@ export const addSmurf = input => dispatch => {
         .post(`http://localhost:3333/smurfs`, input)
         .then(res => {
             // console.log(res)
-            dispatch({ type: ADD_SMURF_SUCCESS, payload: input });
+            dispatch({ type: ADD_SMURF_SUCCESS, payload: res.data });
         })
         .catch(err => {
             dispatch({ type: ADD_SMURF_FAILURE, payload: err.response })
@@ -47,7 +47,7 @@ export const deleteSmurf = id => dispatch => {
         .delete(`http://localhost:3333/smurfs/${id}`)
         .then(res => {
             // console.log(res)
-            dispatch({ type: DELETE_SMURF_SUCCESS });
+            dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data });
         })
         .catch(err => {
             dispatch({ type: DELETE_SMURF_FAILURE, payload: err.response })
