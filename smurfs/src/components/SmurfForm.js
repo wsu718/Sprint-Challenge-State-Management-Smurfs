@@ -49,7 +49,7 @@ const SmurfForm = props => {
                 <h2>Show me the Smurfs!</h2>
                 <button
                     onClick={() => props.getSmurfs()}
-                >Show Smurfs</button>
+                >Refresh Smurfs</button>
             </div>
 
             <div className="container">
