@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { addSmurf, getSmurfs, deleteSmurf } from '../actions/smurfActions';
+import { addSmurf, getSmurfs, deleteSmurf, editSmurfs } from '../actions/smurfActions';
 import Loader from 'react-loader-spinner';
 
 const SmurfForm = props => {
@@ -14,6 +14,21 @@ const SmurfForm = props => {
     const [addSmurfAge, setAddSmurfAge] = useState('');
     const [addSmurfHeight, setAddSmurfHeight] = useState('');
     const [deleteSmurfId, setDeleteSmurfId] = useState('');
+
+    const [editValue, setEditValue] = useState({
+        name: null,
+        age: null,
+        height: null
+
+    });
+    console.log(editValue);
+    const handleEditChange = e => {
+        setEditValue({
+            ...editValue,
+            [e.target.name]: e.target.value
+        });
+    };
+
 
     const handleChanges = e => {
         switch (e.target.name) {
@@ -112,6 +127,50 @@ const SmurfForm = props => {
                     >Delete Smurf</button>
                 </div>
 
+                <div className="deleteSmurf">
+                    <h2>Update Smurf</h2>
+
+                    <label>Name:</label>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Smurf Name"
+                        onChange={handleEditChange}
+                    // value={addSmurfName}
+                    />
+
+                    <label>Age:</label>
+                    <input
+                        type="number"
+                        name="age"
+                        placeholder="Age"
+                        onChange={handleEditChange}
+                    // value={addSmurfName}
+                    />
+
+                    <label>Height:</label>
+                    <input
+                        type="text"
+                        name="height"
+                        placeholder="Height"
+                        onChange={handleEditChange}
+                    // value={addSmurfName}
+                    />
+
+                    <label>ID:</label>
+                    <input
+                        type="text"
+                        name="id"
+                        placeholder="Smurf ID"
+                        onChange={handleEditChange}
+                    // value={addSmurfName}
+                    />
+
+                    <button
+                        onClick={() => props.editSmurfs(editValue)}
+                    >Edit Smurf</button>
+                </div>
+
             </div>
         </div>
     )
@@ -129,4 +188,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { deleteSmurf, addSmurf, getSmurfs })(SmurfForm);
+export default connect(mapStateToProps, { deleteSmurf, addSmurf, getSmurfs, editSmurfs })(SmurfForm);
