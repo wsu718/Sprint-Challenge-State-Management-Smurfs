@@ -4,7 +4,10 @@ import {
     ADD_SMURF_FAILURE,
     GET_SMURFS_START,
     GET_SMURFS_SUCCESS,
-    GET_SMURFS_FAILURE
+    GET_SMURFS_FAILURE,
+    DELETE_SMURF_START,
+    DELETE_SMURF_SUCCESS,
+    DELETE_SMURF_FAILURE
 } from '../actions/smurfActions';
 
 const initialState = {
@@ -37,6 +40,24 @@ const smurfReducer = (state = initialState, action) => {
                 isPosting: false,
                 error: action.payload.data.Error
             };
+        case DELETE_SMURF_START:
+            return {
+                ...state,
+                isPosting: true
+            }
+        case DELETE_SMURF_SUCCESS:
+            return {
+                ...state,
+                isPosting: false,
+                error: '',
+            }
+        case DELETE_SMURF_FAILURE:
+            return {
+                ...state,
+                isPosting: false,
+                error: action.payload.data.Error
+            };
+
         case GET_SMURFS_START:
             return {
                 ...state,
@@ -57,6 +78,7 @@ const smurfReducer = (state = initialState, action) => {
                 isFetching: false,
                 error: action.payload
             }
+
         default:
             return state;
     }

@@ -7,6 +7,7 @@ const SmurfCard = props => {
             <p><span className="titles">Age: </span>{props.smurf.age}</p>
             <p><span className="titles">Height: </span>{props.smurf.height}</p>
             <p><span className="titles">Id: </span> {props.smurf.id}</p>
+
         </div>
     )
 }

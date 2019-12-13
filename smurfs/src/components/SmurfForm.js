@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { connect } from 'react-redux';
-import { addSmurf, getSmurfs } from '../actions/smurfActions';
+import { addSmurf, getSmurfs, deleteSmurf } from '../actions/smurfActions';
 import Loader from 'react-loader-spinner';
 
 const SmurfForm = props => {
@@ -9,7 +9,7 @@ const SmurfForm = props => {
     const [addSmurfName, setAddSmurfName] = useState('');
     const [addSmurfAge, setAddSmurfAge] = useState('');
     const [addSmurfHeight, setAddSmurfHeight] = useState('');
-
+    const [deleteSmurfId, setDeleteSmurfId] = useState('');
 
     const handleChanges = e => {
         switch (e.target.name) {
@@ -20,6 +20,8 @@ const SmurfForm = props => {
                 return setAddSmurfAge(+e.target.value);
             case 'height':
                 return setAddSmurfHeight(e.target.value);
+            case 'id':
+                return setDeleteSmurfId(+e.target.value);
             default:
                 return null
         }
@@ -88,6 +90,24 @@ const SmurfForm = props => {
                         )}
                     >Add Smurf</button>
                 </div>
+
+                <div className="deleteSmurf">
+                    <h2>Delete Smurf</h2>
+
+                    <label>ID:</label>
+                    <input
+                        type="text"
+                        name="id"
+                        placeholder="Smurf ID"
+                        onChange={handleChanges}
+                    // value={addSmurfName}
+                    />
+
+                    <button
+                        onClick={() => props.deleteSmurf(deleteSmurfId)}
+                    >Delete Smurf</button>
+                </div>
+
             </div>
         </div>
     )
@@ -98,10 +118,11 @@ const mapStateToProps = state => {
     return {
         addSmurf: state.addSmurf,
         getSmurfs: state.getSmurfs,
+        deleteSmurf: state.deleteSmurf,
         isFetching: state.isFetching,
         isPosting: state.isPosting,
         error: state.error
     }
 }
 
-export default connect(mapStateToProps, { addSmurf, getSmurfs })(SmurfForm);
+export default connect(mapStateToProps, { deleteSmurf, addSmurf, getSmurfs })(SmurfForm);
