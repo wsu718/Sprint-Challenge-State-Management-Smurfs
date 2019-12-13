@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import { addSmurf, getSmurfs, deleteSmurf } from '../actions/smurfActions';
 import Loader from 'react-loader-spinner';
 
 const SmurfForm = props => {
+
+    useEffect(() => {
+        props.getSmurfs();
+    }, [])
 
     const [addSmurfName, setAddSmurfName] = useState('');
     const [addSmurfAge, setAddSmurfAge] = useState('');

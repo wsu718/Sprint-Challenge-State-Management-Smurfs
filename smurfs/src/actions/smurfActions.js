@@ -33,7 +33,7 @@ export const addSmurf = input => dispatch => {
         .post(`http://localhost:3333/smurfs`, input)
         .then(res => {
             // console.log(res)
-            dispatch({ type: ADD_SMURF_SUCCESS });
+            dispatch({ type: ADD_SMURF_SUCCESS, payload: input });
         })
         .catch(err => {
             dispatch({ type: ADD_SMURF_FAILURE, payload: err.response })
